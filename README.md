@@ -2,7 +2,7 @@ Current design is to support the easy integration of Python functions with pyclo
 
 ## Running
 ```
-docker run -ti -v ${PWD}:/home/clowder/data clowder/generator:latest
+docker run -ti -v ${PWD}:/home/clowder/data hub.ncsa.illinois.edu/clowder/generator:latest
 ```
 This will produce two files:
 1. Dockerfile

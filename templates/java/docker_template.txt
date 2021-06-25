@@ -1,0 +1,6 @@
+FROM {{extractor_build_info['base']}}
+
+WORKDIR /home/clowder
+COPY * /home/clowder
+
+# TO DO

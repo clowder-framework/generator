@@ -1,0 +1,23 @@
+{% if not extractor_build_info['base'] %}
+FROM python3-slim
+{% else %}
+FROM {{extractor_build_info['base']}}
+{% endif %}
+
+WORKDIR /home/clowder
+COPY * /home/clowder
+
+{% if 'pyclowder' not in extractor_build_info['dependencies'] %}
+RUN pip install pyclowder==2.4.0
+{% endif %}
+{% for key,val in extractor_build_info['dependencies'].items() %}
+{% if not val %}
+RUN pip install {{key }}
+{% else %}
+RUN pip install {{key}}=={{val}}
+{% endif %}
+{% endfor %}
+
+COPY simple_extractor.py /home/clowder/
+
+CMD python simple_extractor.py

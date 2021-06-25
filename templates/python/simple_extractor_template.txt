@@ -1,0 +1,16 @@
+from pyclowder.extractors import SimpleExtractor
+from {{extractor_build_info['module']}} import *
+
+class SimplePythonExtractor(SimpleExtractor):
+    def __init__(self, extraction):
+        SimpleExtractor.__init__(self)
+        self.extraction = extraction
+
+    def process_file(self, input_file):
+        return self.extraction(input_file)
+
+    def process_dataset(self, input_files):
+        return self.extraction(input_files)
+
+if __name__=='__main__':
+    SimplePythonExtractor({{extractor_build_info['function']}}).start()

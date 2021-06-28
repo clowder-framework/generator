@@ -36,7 +36,7 @@ A file called extractor_info.json file that contains metadata about your extract
     "jinja2":"3.0.1" },
   "module": "wordcount",
   "function": "wordcount"
-  }
+}
 ```
 1. Language: the coding language your function
 2. Base: the docker image to be used. If none is specified, the default for Python is (python3-slim).

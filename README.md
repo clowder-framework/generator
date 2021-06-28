@@ -8,14 +8,14 @@ docker run -ti -v ${PWD}:/home/clowder/data hub.ncsa.illinois.edu/clowder/genera
 This will produce two files:
 1. Dockerfile
 
-This Dockerfile you will use to create you Docker container that will be deployed to your Clowder instance.
+This file is used to create a Docker container that includes your user code. This Docker container will be deployed to your Clowder instance enabling you to run your code as a Clowder extractor. To create the Docker container execute the following command:
 
 ```
 docker build -t <your image tag> .
 ```
 2. simple_extractor.py
 
-This is code that wraps user code to run within Clowder. The Dockerfile adds this file to the Docker container and executes this file when the Docker container is run.
+This file wraps your user code enabling it to run/interact with Clowder. The Dockerfile adds this file to the Docker container and executes this file when the Docker container is run.
 
 ## Dependencies
 In order to create a simple extractor using the clowder/generator, two files are needed:

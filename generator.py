@@ -30,7 +30,7 @@ except:
               "jinja2":"3.0.1" },
             "module": "wordcount",
             "function": "wordcount"
-            }
+          }
          """)
     sys.exit(1)
             

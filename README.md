@@ -15,7 +15,7 @@ docker build -t <your image tag> .
 ```
 2. simple_extractor.py
 
-This is code that wraps user code to run within Clowder. The Dockerfile adds this file and runs it as the CMD.
+This is code that wraps user code to run within Clowder. The Dockerfile adds this file to the Docker container and executes this file when the Docker container is run.
 
 ## Dependencies
 In order to create a simple extractor using the clowder/generator, two files are needed:

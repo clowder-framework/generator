@@ -1,6 +1,7 @@
 Current design is to support the easy integration of Python functions with pyclowder to create simple extractors as described here: https://github.com/clowder-framework/pyclowder#simpleextractor.
 
 ## Running
+Run the following command in the same directory as your Python code and extractor_info.json file (described below):
 ```
 docker run -ti -v ${PWD}:/home/clowder/data hub.ncsa.illinois.edu/clowder/generator:latest
 ```

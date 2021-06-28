@@ -16,8 +16,24 @@ with open(os.path.join(data_dir,'extractor_info.json')) as f:
   extractor_info = json.load(f)    
 
 # Selecting subset of extractor_info related to building Dockerfile
-extractor_build_info = extractor_info['build']
-
+try:
+    extractor_build_info = extractor_info['build']
+except:
+    print("""
+          Must specify build section in extractor_info.json!\n
+          For example:\n
+          "build": {
+            "language": "python",
+            "base": "python:3.8",
+            "dependencies": {
+              "pandas":"",
+              "jinja2":"3.0.1" },
+            "module": "wordcount",
+            "function": "wordcount"
+            }
+         """)
+    sys.exit(1)
+            
 # Set template environement for jinja2
 env = Environment(loader = FileSystemLoader(
                   os.path.join(home_dir,"templates/{}".format(extractor_build_info['language']))), 

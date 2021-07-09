@@ -7,9 +7,11 @@ FROM {{extractor_build_info['base']}}
 WORKDIR /home/clowder
 COPY * /home/clowder
 
-{% if 'pyclowder' not in extractor_build_info['dependencies'] %}
 RUN pip install pyclowder==2.4.0
-{% endif %}
+{% if extractor_build_info['requirements.txt'] %}
+RUN pip install -r requirements.txt
+{% else %}
+{% if 'dependencies' in extractor_build_info %}
 {% for key,val in extractor_build_info['dependencies'].items() %}
 {% if not val %}
 RUN pip install {{key }}
@@ -17,7 +19,8 @@ RUN pip install {{key }}
 RUN pip install {{key}}=={{val}}
 {% endif %}
 {% endfor %}
-
+{% endif %}
+{% endif %}
 COPY simple_extractor.py /home/clowder/
 
 CMD python simple_extractor.py

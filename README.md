@@ -38,8 +38,8 @@ A file called extractor_info.json file that contains metadata about your extract
   "function": "wordcount"
 }
 ```
-1. Language: the coding language your function
-2. Base: the docker image to be used. If none is specified, the default for Python is (python3-slim).
-3. dependencies: any packages on which your code depends. Versions can be left empty as shown above.
-4. module: the name of your file that contains your code. In the above example, that would be wordcount.py
-5. function: the function to be called. In the above example, the function wordcount() would reside within wordcount.py
+1. Language (REQUIRED): the coding language your function
+2. Base (OPTIONAL): the docker image to be used. If none is specified, the default for Python is (python3-slim).
+3. dependencies (OPTIONAL): any packages on which your code depends. Versions can be left empty as shown above. For Python, if a requirements.txt file is present, it will be used instead.
+4. module (REQUIRED): the name of your file that contains your code. In the above example, that would be wordcount.py
+5. function (REQUIRED): the function to be called. In the above example, the function wordcount() would reside within wordcount.py

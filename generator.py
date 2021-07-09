@@ -47,6 +47,16 @@ extractor_output = extractor.render(extractor_build_info = extractor_build_info)
 with open(os.path.join(data_dir,"simple_extractor.py"), "w") as fe:
     fe.write(extractor_output)
 
+
+# Check for requirements.txt 
+if extractor_build_info['language'].lower() == 'python':
+    if os.path.isfile(os.path.join(data_dir,'requirements.txt')):
+        extractor_build_info['requirements.txt'] = True
+        if 'dependencies' in extractor_build_info:
+            print("Both requirements.txt file and dependencies in build section of the extractor_info.json file found! Will default to requirements.txt.")
+    else:
+        extractor_build_info['requirements.txt'] = False
+
 # Create Dockerfile
 dockerfile = env.get_template('docker_template.txt')
 dockerfile_output = dockerfile.render(extractor_build_info = extractor_build_info)

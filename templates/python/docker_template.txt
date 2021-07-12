@@ -7,12 +7,12 @@ FROM {{extractor_build_info['base']}}
 WORKDIR /home/clowder
 COPY * /home/clowder
 
-RUN pip install pyclowder==2.4.0
+RUN pip install pyclowder==2.4.0 && \
 {% if extractor_build_info['requirements.txt'] %}
-RUN pip install -r requirements.txt
+    pip install -r requirements.txt
 {% else %}
 {% if 'dependencies' in extractor_build_info %}
-{{ "RUN pip install" + " " }} 
+{{ "    pip install" + " " }} 
 {%- for key,val in extractor_build_info['dependencies'].items() %}
 {%- if not val %}
 {{ key + " " }}

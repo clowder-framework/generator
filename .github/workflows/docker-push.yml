@@ -1,7 +1,7 @@
 name: Push Docker Image
 on: 
   push: 
-    branches: ['github-action']
+    branches: ['main']
 jobs:
   push_to_registry:
     name: Push Docker image to hub.ncsa.illinois.edu
@@ -13,8 +13,8 @@ jobs:
         uses: docker/login-action@v1
         with:
           registry: hub.ncsa.illinois.edu
-          username: ${{ secrets.HUB_USERNAME }}
-          password: ${{ secrets.HUB_PASSWORD }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
       - name: Push to Docker Hub
         uses: docker/build-push-action@v2
         with:

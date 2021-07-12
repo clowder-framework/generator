@@ -12,13 +12,14 @@ RUN pip install pyclowder==2.4.0
 RUN pip install -r requirements.txt
 {% else %}
 {% if 'dependencies' in extractor_build_info %}
-{% for key,val in extractor_build_info['dependencies'].items() %}
-{% if not val %}
-RUN pip install {{key }}
-{% else %}
-RUN pip install {{key}}=={{val}}
+{{ "RUN pip install" + " " }} 
+{%- for key,val in extractor_build_info['dependencies'].items() %}
+{%- if not val %}
+{{ key + " " }}
+{%- else %}
+{{key + "==" + val + " "}}
 {% endif %}
-{% endfor %}
+{% endfor +%}
 {% endif %}
 {% endif %}
 COPY simple_extractor.py /home/clowder/

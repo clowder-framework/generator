@@ -1,5 +1,5 @@
 {% if not extractor_build_info['base'] %}
-FROM python3-slim
+FROM python:3-slim
 {% else %}
 FROM {{extractor_build_info['base']}}
 {% endif %}

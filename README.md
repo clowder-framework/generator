@@ -3,7 +3,7 @@ Current design is to support the easy integration of Python functions with pyclo
 ## Running
 Run the following command in the same directory as your Python code and extractor_info.json file (described below):
 ```
-docker run -ti -v ${PWD}:/home/clowder/data hub.ncsa.illinois.edu/clowder/generator:latest
+docker run -ti -v ${PWD}:/home/clowder/data clowder/generator:latest
 ```
 This will produce two files:
 1. Dockerfile
